@@ -53,6 +53,7 @@ Designed **`chrono`**: *"Research the key milestones of the James Webb Space Tel
 
 Command: `uv run python run_queries.py --all-queries` (base five + assignment queries). Query K resume demo logged separately below.
 
+```text
 code % uv run python run_queries.py --all-queries
 
 
@@ -1060,11 +1061,13 @@ FINAL: The development and deployment of the James Webb Space Telescope (JWST) f
 [run_queries] batch complete; progress file cleared
 code % 
 code % 
+```
 
 ## Query K resume demo (separate from `--all-queries`)
 
 SIGKILL mid-run and resume via `run_query_k.py`. Not included in the batch above.
 
+```text
 code % uv run python run_query_k.py 
 [run_query_k] kill phase: spawning worker (session s8_K_resumed_v2)
 
@@ -1596,3 +1599,4 @@ Sources:
 ══════════════════════════════════════════════════════════════════════════════
 
 code % 
+```
