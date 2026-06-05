@@ -1,3 +1,57 @@
+# Session 8 Assignment — Results Summary
+
+This README documents the DAG-based agent built for Session 8. Full run logs for each query appear below.
+
+## What we worked on
+
+### Part 1 — DAG agent and five base queries
+
+Built a NetworkX DAG orchestrator where the Planner emits the graph, the Executor runs skills concurrently, and graph state persists to disk. Passed the five base queries from this session within their iteration and wall-clock bounds:
+
+| Key | Query | Purpose |
+|-----|-------|---------|
+| `hello` | Say hello. | Minimum two-node DAG (planner → formatter) |
+| `a` | Fetch Claude Shannon's Wikipedia page; birth date, death date, three contributions | Sequential research → distiller → formatter with auto-critic on distiller |
+| `i` | Populations of London, Paris, Berlin; which two are closest | Parallel fan-out among three researchers (base-query validation) |
+| `j` | Read `/nonexistent/path.txt` | Graceful failure — planner routes directly to formatter |
+| `k` | Lagos, Cairo, Kinshasa populations and growth rates | Resumable execution target (see note below) |
+
+**Run logs for all five base queries are included later in this file** (queries 1–5 of the `--all-queries` batch).
+
+**Resume demo runs separately.** The SIGKILL-and-resume proof for Query K is **not** part of `--all-queries`. It is executed on its own via `uv run python run_query_k.py` (kill phase) followed by `uv run python run_query_k.py --resume`. Those logs appear in a dedicated section at the end of this README.
+
+### Part 2 — Parallel fan-out query
+
+Designed **`companies`**: *"What year were Apple, Microsoft, and Google founded? List each company's founding year and tell me which company is the oldest."*
+
+The Planner emits three independent `researcher` nodes (`apple`, `ms`, `google`) with no cross-dependencies. The parallel layer wall-clock is the maximum of the three branches (~45 s), not their sum (~118 s).
+
+### Part 3 — Critic verdict and recovery
+
+Designed two queries that exercise the Critic on both pass and fail paths:
+
+| Key | Query | Critic behaviour |
+|-----|-------|------------------|
+| `critic_pass` | Same as Query A (Claude Shannon Wikipedia) | Distiller auto-critic inserts on the distiller → formatter edge; verdict **pass** |
+| `critic_fail` | Apollo 11 moon landing; write exactly one 5-7-5 haiku, final answer only the three lines | Planner-emitted critic on summariser output; first run **fails** (prose, not haiku), triggers Planner recovery subgraph with coder + critic; second plan produces a corrected haiku |
+
+### Part 4 — Coder skill
+
+Replaced the stub `prompts/coder.md` with a full prompt that emits self-contained Python for the `SandboxExecutor` (stdlib only, `RESULT:` stdout prefix, no tool calls).
+
+Designed **`currency`**: *"Fetch the current USD exchange rates for EUR, GBP, and JPY. Which currency moved most vs USD in the last week?"* — three parallel researchers feed a **coder → sandbox_executor** chain so weekly percentage moves are computed numerically rather than inferred by the Formatter from prose. The `critic_fail` recovery path also demonstrates Coder on the haiku syllable-count constraint.
+
+### Part 5 — New skill: Chronologer
+
+Added **`chronologer`** to `agent_config.yaml` with `prompts/chronologer.md`. This skill orders dated events from upstream research into a structured timeline — not covered by distiller (field extraction), summariser (condensation), or formatter (rendering).
+
+Designed **`chrono`**: *"Research the key milestones of the James Webb Space Telescope from program announcement through first science images. Present them in chronological order."* — planner emits `researcher → chronologer → formatter`. No orchestrator changes were required beyond the yaml entry and prompt file.
+
+---
+
+## Run logs
+
+Command: `uv run python run_queries.py --all-queries` (base five + assignment queries). Query K resume demo logged separately below.
 
 code % uv run python run_queries.py --all-queries
 
@@ -1006,6 +1060,10 @@ FINAL: The development and deployment of the James Webb Space Telescope (JWST) f
 [run_queries] batch complete; progress file cleared
 code % 
 code % 
+
+## Query K resume demo (separate from `--all-queries`)
+
+SIGKILL mid-run and resume via `run_query_k.py`. Not included in the batch above.
 
 code % uv run python run_query_k.py 
 [run_query_k] kill phase: spawning worker (session s8_K_resumed_v2)
