@@ -1,0 +1,29 @@
+# Secrets — NEVER commit
+.env
+.env.local
+
+# Local runtime state — regenerated on each run
+code/state/sessions/*/
+!code/state/sessions/.gitkeep
+code/state/memory.json
+code/state/index.faiss
+code/state/index_ids.json
+code/state/run_queries_progress.json
+code/state/critic_fail_candidate_results.json
+code/usage.json
+code/sandbox/*.txt
+code/.venv/
+gateway/.venv/
+gateway/*.db
+gateway/usage.json
+
+# Build / cache artifacts
+**/__pycache__/
+**/*.pyc
+**/uv.lock
+**/.pytest_cache/
+
+# Editors
+.vscode/
+.idea/
+.DS_Store
