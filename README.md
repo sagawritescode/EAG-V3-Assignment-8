@@ -1,5 +1,5 @@
 
-sagarshete@Sagars-MacBook-Pro code % uv run python run_queries.py --all-queries
+code % uv run python run_queries.py --all-queries
 
 
 ##############################################################################
@@ -1004,10 +1004,10 @@ FINAL: The development and deployment of the James Webb Space Telescope (JWST) f
 
 [run_queries] finished chrono in 82.4s
 [run_queries] batch complete; progress file cleared
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
+code % 
+code % 
 
-sagarshete@Sagars-MacBook-Pro code % uv run python run_query_k.py 
+code % uv run python run_query_k.py 
 [run_query_k] kill phase: spawning worker (session s8_K_resumed_v2)
 
 ══════════════════════════════════════════════════════════════════════════════
@@ -1152,24 +1152,13 @@ Sources:
 ══════════════════════════════════════════════════════════════════════════════
 
 [run_query_k] worker finished before SIGKILL; session is already complete (resume skipped)
-sagarshete@Sagars-MacBook-Pro code %                              
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % uv run python run_queries.py --clear --memory                         
+code % uv run python run_queries.py --clear --memory                         
 bck-i-search: clear_
-[run_queries] removed 1 session(s) under /Users/sagarshete/Documents/eagv3/S8SharedCode/code/state/sessions
+[run_queries] removed 1 session(s) under eagv3/S8SharedCode/code/state/sessions
 [run_queries] cleared run_queries_progress.json
 [run_queries] cleared memory.json and vector index
 zsh: command not found: bck-i-search:
-sagarshete@Sagars-MacBook-Pro code % uv run python run_query_k.py 
+code % uv run python run_query_k.py 
 [run_query_k] kill phase: spawning worker (session s8_K_resumed_v2)
 
 ══════════════════════════════════════════════════════════════════════════════
@@ -1225,16 +1214,16 @@ session s8_K_resumed_v2  ─  query: For Lagos, Cairo, and Kinshasa, find curren
                              ion+and+annual+growth+rate+of+Cairo+2024+2025 200                            
 [06/05/26 15:46:30] INFO     Processing request of type ListToolsRequest                     server.py:727
 Traceback (most recent call last):
-  File "/Users/sagarshete/Documents/eagv3/S8SharedCode/code/run_query_k.py", line 197, in <module>
+  File "Documents/eagv3/S8SharedCode/code/run_query_k.py", line 197, in <module>
     raise SystemExit(main())
                      ~~~~^^
-  File "/Users/sagarshete/Documents/eagv3/S8SharedCode/code/run_query_k.py", line 192, in main
+  File "/Documents/eagv3/S8SharedCode/code/run_query_k.py", line 192, in main
     _run_kill_phase(show_graph=args.show_graph)
     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/sagarshete/Documents/eagv3/S8SharedCode/code/run_query_k.py", line 105, in _run_kill_phase
+  File "Documents/eagv3/S8SharedCode/code/run_query_k.py", line 105, in _run_kill_phase
     raise RuntimeError(f"kill phase timed out after {timeout_s:.0f}s")
 RuntimeError: kill phase timed out after 20s
-sagarshete@Sagars-MacBook-Pro code % uv run python run_query_k.py --resume
+code % uv run python run_query_k.py --resume
 [run_query_k] resuming session s8_K_resumed_v2
 
 ══════════════════════════════════════════════════════════════════════════════
@@ -1359,41 +1348,13 @@ FINAL: Based on the latest data for 2026, here is the population and growth rate
 
 **Fastest Growing:** Kinshasa is the fastest
 ══════════════════════════════════════════════════════════════════════════════
-
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % 
-sagarshete@Sagars-MacBook-Pro code % uv run python run_queries.py --clear --memory                         
+code % uv run python run_queries.py --clear --memory                         
 bck-i-search: clear_
-[run_queries] removed 1 session(s) under /Users/sagarshete/Documents/eagv3/S8SharedCode/code/state/sessions
+[run_queries] removed 1 session(s) under Documents/eagv3/S8SharedCode/code/state/sessions
 [run_queries] cleared run_queries_progress.json
 [run_queries] cleared memory.json and vector index
 zsh: command not found: bck-i-search:
-sagarshete@Sagars-MacBook-Pro code % uv run python run_query_k.py         
+code % uv run python run_query_k.py         
 [run_query_k] kill phase: spawning worker (session s8_K_resumed_v2)
 
 ══════════════════════════════════════════════════════════════════════════════
@@ -1443,16 +1404,16 @@ session s8_K_resumed_v2  ─  query: For Lagos, Cairo, and Kinshasa, find curren
                              =countryUS 200                                                               
                     INFO     Processing request of type ListToolsRequest                     server.py:727
 Traceback (most recent call last):
-  File "/Users/sagarshete/Documents/eagv3/S8SharedCode/code/run_query_k.py", line 197, in <module>
+  File "Documents/eagv3/S8SharedCode/code/run_query_k.py", line 197, in <module>
     raise SystemExit(main())
                      ~~~~^^
-  File "/Users/sagarshete/Documents/eagv3/S8SharedCode/code/run_query_k.py", line 192, in main
+  File "/Documents/eagv3/S8SharedCode/code/run_query_k.py", line 192, in main
     _run_kill_phase(show_graph=args.show_graph)
     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/sagarshete/Documents/eagv3/S8SharedCode/code/run_query_k.py", line 105, in _run_kill_phase
+  File "Documents/eagv3/S8SharedCode/code/run_query_k.py", line 105, in _run_kill_phase
     raise RuntimeError(f"kill phase timed out after {timeout_s:.0f}s")
 RuntimeError: kill phase timed out after 20s
-sagarshete@Sagars-MacBook-Pro code % uv run python run_query_k.py --resume
+code % uv run python run_query_k.py --resume
 [run_query_k] resuming session s8_K_resumed_v2
 
 ══════════════════════════════════════════════════════════════════════════════
@@ -1576,4 +1537,4 @@ Sources:
 - Kinshasa: https://ww
 ══════════════════════════════════════════════════════════════════════════════
 
-sagarshete@Sagars-MacBook-Pro code % 
+code % 
